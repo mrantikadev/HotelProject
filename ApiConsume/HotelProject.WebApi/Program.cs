@@ -24,6 +24,14 @@ builder.Services.AddScoped<ISubscribeService, SubscribeManager>();
 builder.Services.AddScoped<ITestimonialDal, EfTestimonialDal>();
 builder.Services.AddScoped<ITestimonialService, TestimonialManager>();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("OtelApiCors", options =>
+    {
+        options.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+    });
+});
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -39,6 +47,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors("OtelApiCors");
 
 app.UseAuthorization();
 
