@@ -6,11 +6,11 @@ using System.Text;
 
 namespace HotelProject.WebUI.Controllers
 {
-    public class TestimonialController1 : Controller
+    public class TestimonialController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
 
-        public TestimonialController1(IHttpClientFactory httpClientFactory)
+        public TestimonialController(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
         }
